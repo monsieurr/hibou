@@ -1,0 +1,10 @@
+# ingestion/requirements.txt
+# Install with: pip install -r ingestion/requirements.txt
+#
+# Python 3.11+ required.
+# All scripts use the service role key — never the anon key.
+
+supabase>=2.10.0
+anthropic>=0.40.0
+pandas>=2.2.0        # optional — used for CSV analysis helpers
+requests>=2.32.0
