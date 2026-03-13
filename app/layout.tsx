@@ -3,10 +3,73 @@ import type { Metadata } from 'next'
 import './globals.css'
 import ThemeToggle from '@/components/ui/ThemeToggle'
 
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL
+  ? process.env.NEXT_PUBLIC_SITE_URL
+  : process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}`
+    : 'http://localhost:3000'
+
+const siteTitle = 'Hibou — ESG Country Intelligence Explorer'
+const siteDescription =
+  'Aggregates, normalises, and visualises Environmental, Social, and Governance (ESG) data from authoritative open sources across all sovereign nations.'
+
 export const metadata: Metadata = {
-  title: 'Hibou — ESG Country Intelligence Explorer',
-  description:
-    'Aggregates, normalises, and visualises Environmental, Social, and Governance (ESG) data from authoritative open sources across all sovereign nations.',
+  metadataBase: new URL(baseUrl),
+  title: {
+    default: siteTitle,
+    template: '%s — Hibou',
+  },
+  description: siteDescription,
+  applicationName: 'Hibou',
+  keywords: [
+    'ESG',
+    'sustainability',
+    'climate',
+    'governance',
+    'social indicators',
+    'country rankings',
+    'data visualization',
+  ],
+  authors: [{ name: 'Hibou' }],
+  creator: 'Hibou',
+  openGraph: {
+    title: siteTitle,
+    description: siteDescription,
+    url: '/',
+    siteName: 'Hibou',
+    type: 'website',
+    locale: 'en_US',
+    images: [
+      {
+        url: '/opengraph-image',
+        width: 1200,
+        height: 630,
+        alt: 'Hibou — ESG Country Intelligence Explorer',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: siteTitle,
+    description: siteDescription,
+    images: ['/twitter-image'],
+  },
+  alternates: {
+    canonical: '/',
+  },
+  manifest: '/manifest.webmanifest',
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#f8f3ef' },
+    { media: '(prefers-color-scheme: dark)', color: '#0d0a08' },
+  ],
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

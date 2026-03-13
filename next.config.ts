@@ -1,5 +1,6 @@
 // next.config.ts
 import type { NextConfig } from 'next'
+import { withSentryConfig } from '@sentry/nextjs'
 
 const nextConfig: NextConfig = {
   // Turbopack config at top level (Next.js 16 — moved from experimental.turbopack)
@@ -16,4 +17,13 @@ const nextConfig: NextConfig = {
   },
 }
 
-export default nextConfig
+export default withSentryConfig(
+  nextConfig,
+  {
+    silent: true,
+  },
+  {
+    hideSourceMaps: true,
+    disableLogger: true,
+  }
+)
