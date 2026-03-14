@@ -7,7 +7,12 @@ export async function middleware(request: NextRequest) {
   }
 
   const forwardedFor = request.headers.get('x-forwarded-for')
-  const ip = forwardedFor?.split(',')[0]?.trim() || request.ip || 'anonymous'
+  const ip =
+    forwardedFor?.split(',')[0]?.trim() ||
+    request.headers.get('x-real-ip') ||
+    request.headers.get('cf-connecting-ip') ||
+    request.headers.get('x-vercel-forwarded-for') ||
+    'anonymous'
 
   const result = await checkRateLimit(ip)
   if (result.success) {
