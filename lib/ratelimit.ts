@@ -30,9 +30,7 @@ export async function checkRateLimit(identifier: string): Promise<RateLimitResul
   }
 
   const result = await ratelimit.limit(identifier)
-  const resetMs = typeof result.reset === 'number'
-    ? result.reset
-    : result.reset.getTime()
+  const resetMs = Number(result.reset)
 
   return {
     success: result.success,
