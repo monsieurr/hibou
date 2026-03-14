@@ -1,6 +1,18 @@
 // next.config.ts
 import type { NextConfig } from 'next'
-import { withSentryConfig } from '@sentry/nextjs'
+import { createRequire } from 'module'
+
+const require = createRequire(import.meta.url)
+let withSentryConfig:
+  | ((config: NextConfig, ...args: Array<Record<string, unknown>>) => NextConfig)
+  | undefined
+
+try {
+  // Optional dependency — app still runs without Sentry installed.
+  ;({ withSentryConfig } = require('@sentry/nextjs'))
+} catch {
+  withSentryConfig = undefined
+}
 
 const nextConfig: NextConfig = {
   // Turbopack config at top level (Next.js 16 — moved from experimental.turbopack)
@@ -17,13 +29,17 @@ const nextConfig: NextConfig = {
   },
 }
 
-export default withSentryConfig(
-  nextConfig,
-  {
-    silent: true,
-  },
-  {
-    hideSourceMaps: true,
-    disableLogger: true,
-  }
-)
+const sentryConfig = withSentryConfig
+  ? withSentryConfig(
+      nextConfig,
+      {
+        silent: true,
+      },
+      {
+        hideSourceMaps: true,
+        disableLogger: true,
+      }
+    )
+  : nextConfig
+
+export default sentryConfig
