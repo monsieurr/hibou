@@ -4,6 +4,9 @@ Hibou is an opinionated ESG explorer for sovereign countries. It favors traceabl
 
 **Live demo:** https://hibou.thomaslfb.eu
 
+![Hibou — World map](public/screenshots/screenshot_overview_hibou.png)
+
+
 ---
 
 ## Architecture
