@@ -1,6 +1,6 @@
 'use client'
 // components/compare/CompareView.tsx
-// Country comparison page — country selector, score diff, dual radar,
+// Country comparison page : country selector, score diff, dual radar,
 // and real per-indicator heatmap fetched via useCountryScores.
 
 import { useState, useMemo, useEffect } from 'react'

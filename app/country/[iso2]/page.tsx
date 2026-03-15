@@ -1,5 +1,5 @@
-// app/country/[iso2]/page.tsx — Country Profile
-// Next.js 16: params is a Promise — must await props.params
+// app/country/[iso2]/page.tsx : Country Profile
+// Next.js 16: params is a Promise : must await props.params
 import { notFound } from 'next/navigation'
 import {
   getCountryContext,
@@ -19,7 +19,7 @@ interface Props {
 
 export async function generateMetadata(props: Props) {
   const { iso2 } = await props.params
-  return { title: `${iso2.toUpperCase()} ESG Profile — Hibou` }
+  return { title: `${iso2.toUpperCase()} ESG Profile : Hibou` }
 }
 
 export default async function CountryPage(props: Props) {

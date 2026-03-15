@@ -1,4 +1,4 @@
--- Hibou ESG — Initial Schema
+-- Hibou ESG : Initial Schema
 -- Run this in your Supabase project → SQL Editor
 -- All tables are append-only by year. No schema changes needed to add new indicators or years.
 
@@ -205,7 +205,7 @@ BEGIN
   END IF;
 END $$;
 
--- ─── Seed indicators (27 indicators — 9 per pillar) ───────────────────────────
+-- ─── Seed indicators (27 indicators : 9 per pillar) ───────────────────────────
 INSERT INTO indicators (code, wb_code, name, pillar, unit, source, higher_is_better) VALUES
   -- Environmental
   ('E1', 'EN.ATM.CO2E.PC',    'CO₂ emissions per capita',                'E', 't/person',        'World Bank / OWID', false),

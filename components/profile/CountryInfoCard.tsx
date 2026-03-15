@@ -28,13 +28,13 @@ function Row({ label, value }: { label: string; value: string }) {
 }
 
 function formatNumber(value: number | null, suffix = ''): string {
-  if (value == null || Number.isNaN(value)) return '—'
+  if (value == null || Number.isNaN(value)) return ':'
   const rounded = Math.round(value)
   return `${rounded.toLocaleString()}${suffix}`
 }
 
 function formatUsd(value: number | null): string {
-  if (value == null || Number.isNaN(value)) return '—'
+  if (value == null || Number.isNaN(value)) return ':'
   const rounded = Math.round(value)
   return `$${rounded.toLocaleString()}`
 }
@@ -43,7 +43,7 @@ export default function CountryInfoCard({ info, stats, selectedYear }: Props) {
   const statsYear = stats?.year ?? null
   const statsYearLabel = statsYear
     ? `${statsYear}${statsYear < selectedYear ? ` (latest ≤ ${selectedYear})` : ''}`
-    : '—'
+    : ':'
   const hasData = Boolean(info || stats)
 
   return (
@@ -51,8 +51,8 @@ export default function CountryInfoCard({ info, stats, selectedYear }: Props) {
       <PanelHeader title="Country Info" />
       <PanelBody>
         <div style={{ marginBottom: 12 }}>
-          <Row label="Capital" value={info?.capital_city ?? '—'} />
-          <Row label="Languages" value={info?.official_languages ?? '—'} />
+          <Row label="Capital" value={info?.capital_city ?? ':'} />
+          <Row label="Languages" value={info?.official_languages ?? ':'} />
           <Row label="Area" value={formatNumber(info?.area_km2 ?? null, ' km²')} />
         </div>
 
@@ -66,7 +66,7 @@ export default function CountryInfoCard({ info, stats, selectedYear }: Props) {
         </div>
 
         <p style={{ fontSize: 11, color: CSS.textDim }}>
-          Source: {stats?.source ?? info?.source ?? '—'}
+          Source: {stats?.source ?? info?.source ?? ':'}
         </p>
         {!hasData && (
           <p style={{ fontSize: 11, color: CSS.textDim, marginTop: 6 }}>

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # ingestion/generate_context.py
 # ──────────────────────────────────────────────────────────────────────────────
-# Script 7 of 7 — generate and store country context blocks.
+# Script 7 of 7 : generate and store country context blocks.
 #
 # Uses the configured LLM (Anthropic or Ollama) to generate GDP per capita,
 # main industries, climate zone, and a short ESG context note. Results are
@@ -116,7 +116,7 @@ def format_indicator(row: dict) -> str:
     name = ind.get("name") or "Unknown indicator"
     norm = row.get("normalized")
     score = f"{round(norm * 100):d}/100" if isinstance(norm, (int, float)) else "N/A"
-    return f"{code} {name} — {score} (data {row.get('year')})"
+    return f"{code} {name} : {score} (data {row.get('year')})"
 
 
 def build_prompt(row: dict, highlights: list[dict]) -> str:
@@ -175,7 +175,7 @@ def generate_context(client: LLMClient, prompt: str) -> dict:
             return extract_json(raw)
         except Exception as exc:
             wait = 2 ** attempt
-            print(f"\n    [llm error] attempt {attempt}/{MAX_RETRIES} — sleeping {wait}s…", end="")
+            print(f"\n    [llm error] attempt {attempt}/{MAX_RETRIES} : sleeping {wait}s…", end="")
             time.sleep(wait)
             last_error = exc
     raise last_error or RuntimeError("generate_context: all retries exhausted")
@@ -232,7 +232,7 @@ def main() -> None:
 
     print(f"Generating context for {len(targets)} countries…")
     if args.dry_run:
-        print("(DRY RUN — no API calls or DB writes)\n")
+        print("(DRY RUN : no API calls or DB writes)\n")
 
     ok = 0
     errors = 0

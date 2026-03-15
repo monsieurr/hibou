@@ -191,13 +191,13 @@ export const numericToIso2: Record<number, string> = {
   887: 'YE', // Yemen
   894: 'ZM', // Zambia
   // ── Additional sovereign nations not in the original list ─────────────────
-  // Kosovo — ISO 3166-1 numeric 926 (assigned 2017); World Bank uses XK
+  // Kosovo : ISO 3166-1 numeric 926 (assigned 2017); World Bank uses XK
   926: 'XK', // Kosovo
-  // Taiwan — ISO 3166-1 numeric 158; World Bank uses TW
+  // Taiwan : ISO 3166-1 numeric 158; World Bank uses TW
   158: 'TW', // Taiwan
-  // Palestinian territories — ISO 3166-1 numeric 275; World Bank uses PS
+  // Palestinian territories : ISO 3166-1 numeric 275; World Bank uses PS
   275: 'PS', // Palestine
-  // Western Sahara — ISO 3166-1 numeric 732; World Bank uses EH
+  // Western Sahara : ISO 3166-1 numeric 732; World Bank uses EH
   732: 'EH', // Western Sahara
   // Cuba already listed (192); adding remaining small-nation gaps:
   // Timor-Leste
@@ -225,7 +225,7 @@ export const numericToIso2: Record<number, string> = {
   // Cook Islands (World Bank includes them)
   // ISO 3166-1 numeric: 184
   184: 'CK', // Cook Islands
-  // Niue — ISO numeric 570
+  // Niue : ISO numeric 570
   570: 'NU', // Niue
   // Andorra already listed (20)
   // San Marino already listed (674)

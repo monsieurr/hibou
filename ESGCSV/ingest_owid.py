@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # ingestion/ingest_owid.py
 # ──────────────────────────────────────────────────────────────────────────────
-# Script 3 of 5 — overwrite E1 (CO₂ per capita) with Our World in Data data.
+# Script 3 of 5 : overwrite E1 (CO₂ per capita) with Our World in Data data.
 #
 # OWID has better coverage and recency than World Bank for CO₂ per capita.
 # This script upserts E1 scores, overwriting any existing WB data for the same
@@ -9,7 +9,7 @@
 #
 # Input:  OWID CO2 CSV from https://github.com/owid/co2-data
 #         Download: https://raw.githubusercontent.com/owid/co2-data/master/owid-co2-data.csv
-# Output: `scores` table — E1 rows updated with OWID values.
+# Output: `scores` table : E1 rows updated with OWID values.
 #
 # Idempotent: upserts on (country_id, indicator_id, year). Safe to re-run.
 # Prerequisites: seed_countries.py and ingest_worldbank.py must have run first.
@@ -30,7 +30,7 @@ from pathlib import Path
 from utils import get_supabase_client
 
 OWID_URL    = "https://raw.githubusercontent.com/owid/co2-data/master/owid-co2-data.csv"
-OWID_SOURCE = "Our World in Data CO2 dataset — https://github.com/owid/co2-data"
+OWID_SOURCE = "Our World in Data CO2 dataset : https://github.com/owid/co2-data"
 
 # We only import years with reasonably complete OWID coverage
 DEFAULT_MIN_YEAR = 2018
@@ -143,7 +143,7 @@ def ingest_owid(
         print("No scores to upsert. Check CSV format.")
         return
 
-    # Upsert — overwrites any existing WB E1 data for the same (country, year)
+    # Upsert : overwrites any existing WB E1 data for the same (country, year)
     BATCH = 500
     for i in range(0, len(scores), BATCH):
         batch = scores[i : i + BATCH]
@@ -153,7 +153,7 @@ def ingest_owid(
         pct = min(100, round((i + len(batch)) / len(scores) * 100))
         print(f"  Progress: {i + len(batch)}/{len(scores)} ({pct}%)", end="\r")
 
-    print(f"\n✓ OWID E1 (CO₂ per capita) ingested — {len(scores)} rows.")
+    print(f"\n✓ OWID E1 (CO₂ per capita) ingested : {len(scores)} rows.")
 
 
 def main() -> None:

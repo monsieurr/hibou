@@ -41,7 +41,7 @@ def fetch_restcountries(timeout: int, retries: int) -> list[dict]:
             if attempt >= retries:
                 break
             wait = 2 ** attempt
-            print(f"  [retry] RestCountries attempt {attempt}/{retries} — waiting {wait}s…")
+            print(f"  [retry] RestCountries attempt {attempt}/{retries} : waiting {wait}s…")
             time.sleep(wait)
     raise last_error or RuntimeError("RestCountries fetch failed.")
 

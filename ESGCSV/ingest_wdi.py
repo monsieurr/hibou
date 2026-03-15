@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # ingestion/ingest_wdi.py
 # ──────────────────────────────────────────────────────────────────────────────
-# Script 4 of 7 — ingest World Development Indicators (WDI) for country info + stats.
+# Script 4 of 7 : ingest World Development Indicators (WDI) for country info + stats.
 #
 # Fetches GDP (current USD), total population, and land area (km²) via the
 # World Bank API and stores them in:

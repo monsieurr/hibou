@@ -1,6 +1,6 @@
 // lib/utils/scores.ts
 // Pure score → display helpers.
-// Color values come from tokens.ts — no hex strings here.
+// Color values come from tokens.ts : no hex strings here.
 
 import type { EsgSummary, Pillar, ScoreMode } from '@/types/hibou'
 import { RAW, PILLAR_HEX, PILLAR_MIN_HEX, PILLAR_CSS, PILLAR_LABEL } from '@/lib/tokens'
@@ -37,7 +37,7 @@ export function scoreToColor(
 
 /**
  * Format a score for display.
- * @param decimals  Decimal places — 0 gives an integer string (default).
+ * @param decimals  Decimal places : 0 gives an integer string (default).
  */
 export function formatScore(
   score: number | null | undefined,
@@ -47,12 +47,12 @@ export function formatScore(
   return decimals > 0 ? score.toFixed(decimals) : Math.round(score).toString()
 }
 
-/** Format a rank as "#12 / 214" or "—". */
+/** Format a rank as "#12 / 214" or ":". */
 export function formatRank(
   rank: number | null | undefined,
   total = 214
 ): string {
-  if (rank == null) return '—'
+  if (rank == null) return ':'
   return `#${rank} / ${total}`
 }
 

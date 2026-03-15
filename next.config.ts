@@ -8,14 +8,14 @@ let withSentryConfig:
   | undefined
 
 try {
-  // Optional dependency — app still runs without Sentry installed.
+  // Optional dependency : app still runs without Sentry installed.
   ;({ withSentryConfig } = require('@sentry/nextjs'))
 } catch {
   withSentryConfig = undefined
 }
 
 const nextConfig: NextConfig = {
-  // Turbopack config at top level (Next.js 16 — moved from experimental.turbopack)
+  // Turbopack config at top level (Next.js 16 : moved from experimental.turbopack)
   turbopack: {},
 
   // Allow Supabase storage domain for any future image assets

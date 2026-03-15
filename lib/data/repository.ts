@@ -275,7 +275,7 @@ export const getRankedSummaries = cache(async (): Promise<SummaryWithCountry[]> 
 
 /**
  * Fetch ALL ESG summaries across ALL years (no deduplication).
- * Used by: World Map year selector — client derives available years and filters.
+ * Used by: World Map year selector : client derives available years and filters.
  */
 export const getAllSummariesAllYears = cache(async (): Promise<SummaryWithCountry[]> => {
   const supabase = await createClient()

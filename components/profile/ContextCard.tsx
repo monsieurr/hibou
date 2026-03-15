@@ -67,11 +67,11 @@ export default function ContextCard({ country, summary, context, dataYearLabel }
       />
       <PanelBody>
 
-        {/* Static fields — always visible */}
+        {/* Static fields : always visible */}
         <div style={{ marginBottom: 12 }}>
           <StaticRow label="ISO Code"     value={`${country.iso2} / ${country.iso3}`} />
-          <StaticRow label="Region"       value={country.region       ?? '—'} />
-          <StaticRow label="Income Group" value={country.income_group ?? '—'} />
+          <StaticRow label="Region"       value={country.region       ?? ':'} />
+          <StaticRow label="Income Group" value={country.income_group ?? ':'} />
           <StaticRow label="Score Year"   value={String(summary.year)} />
           <StaticRow label="Data Years"   value={dataYearLabel} />
         </div>
@@ -80,9 +80,9 @@ export default function ContextCard({ country, summary, context, dataYearLabel }
 
         {context ? (
           <div style={{ marginBottom: 10 }}>
-            <ContextRow label="GDP / Capita"  value={context.gdp_per_capita ?? '—'}  accent={RAW.accentS} />
-            <ContextRow label="Industries"    value={context.main_industries ?? '—'} accent={RAW.accentE} />
-            <ContextRow label="Climate Zone"  value={context.climate_zone ?? '—'}    accent={RAW.accentE} />
+            <ContextRow label="GDP / Capita"  value={context.gdp_per_capita ?? ':'}  accent={RAW.accentS} />
+            <ContextRow label="Industries"    value={context.main_industries ?? ':'} accent={RAW.accentE} />
+            <ContextRow label="Climate Zone"  value={context.climate_zone ?? ':'}    accent={RAW.accentE} />
             {context.esg_context && (
               <div style={{
                 marginTop: 10,

@@ -233,14 +233,14 @@ export default function WorldMap({ allSummaries }: Props) {
         >
           <span style={{ color: CSS.text }}>{tooltip.name}</span>
           <span style={{ color: PILLAR_CSS[pillar], marginLeft: 8, fontWeight: 600 }}>
-            {tooltip.score != null ? formatScore(tooltip.score, 1) : '—'}
+            {tooltip.score != null ? formatScore(tooltip.score, 1) : ':'}
           </span>
         </div>
       )}
 
       <div className="map-header">
         <div className="map-title-row">
-          <h1 className="page-title" style={{ marginBottom: 0 }}>🦉 Hibou — Auditable ESG Scores</h1>
+          <h1 className="page-title" style={{ marginBottom: 0 }}>🦉 Hibou : Auditable ESG Scores</h1>
           {selectedYear ? <Tag>DATA YEAR {selectedYear}</Tag> : null}
         </div>
         <p className="page-subtitle">
@@ -401,7 +401,7 @@ export default function WorldMap({ allSummaries }: Props) {
                   </div>
                   {(selectedCapital || selectedLanguages) && (
                     <div className="country-meta" style={{ marginTop: 2 }}>
-                      Capital: {selectedCapital ?? '—'} · Languages: {selectedLanguages ?? '—'}
+                      Capital: {selectedCapital ?? ':'} · Languages: {selectedLanguages ?? ':'}
                     </div>
                   )}
                 </div>
@@ -480,7 +480,7 @@ export default function WorldMap({ allSummaries }: Props) {
               className="panel-title"
               style={{ marginBottom: 10 }}
             >
-              TOP 10 — {pillar} · {selectedYear} · {scoreMode.toUpperCase()}
+              TOP 10 : {pillar} · {selectedYear} · {scoreMode.toUpperCase()}
             </div>
             {top10.map((s, i) => (
               <div

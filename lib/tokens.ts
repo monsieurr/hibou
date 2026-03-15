@@ -40,7 +40,7 @@ export const CSS = {
 
 // ── Per-pillar accent colors ───────────────────────────────────────────────────
 
-/** CSS variable string per pillar — safe for inline style={{ color }} */
+/** CSS variable string per pillar : safe for inline style={{ color }} */
 export const PILLAR_CSS: Record<Pillar, string> = {
   E:   CSS.accentE,
   S:   CSS.accentS,
@@ -48,7 +48,7 @@ export const PILLAR_CSS: Record<Pillar, string> = {
   ESG: CSS.accent,
 }
 
-/** Raw hex per pillar — used for canvas / SVG / D3 color interpolation */
+/** Raw hex per pillar : used for canvas / SVG / D3 color interpolation */
 export const PILLAR_HEX: Record<Pillar, string> = {
   E:   RAW.accentE,
   S:   RAW.accentS,

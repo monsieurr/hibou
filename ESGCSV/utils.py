@@ -5,7 +5,7 @@
 # CRITICAL: normalize() returns a float in the range 0.0–1.0.
 # The DB column `normalized` is DECIMAL(5,4) which stores values 0.0000–9.9999.
 # The entire frontend multiplies `normalized` by 100 to get a 0–100 display score.
-# DO NOT return score * 100 here — that would store 100× too large and break the UI.
+# DO NOT return score * 100 here : that would store 100× too large and break the UI.
 # ──────────────────────────────────────────────────────────────────────────────
 
 from __future__ import annotations
@@ -21,7 +21,7 @@ from supabase import create_client, Client
 def get_supabase_client() -> Client:
     """Return a Supabase client using the Secret key (service role).
 
-    The service role key bypasses RLS — required for INSERT / UPSERT / UPDATE.
+    The service role key bypasses RLS : required for INSERT / UPSERT / UPDATE.
     Never use the publishable (anon) key for ingestion scripts.
     """
     url = os.environ.get("NEXT_PUBLIC_SUPABASE_URL")
@@ -59,7 +59,7 @@ def normalize(
         A float in [0.0, 1.0] rounded to 4 decimal places.
 
     Note: The frontend reads this value and multiplies by 100 to display 0–100.
-    The DB column `normalized` is DECIMAL(5,4) — it stores 0.0000–1.0000, NOT 0–100.
+    The DB column `normalized` is DECIMAL(5,4) : it stores 0.0000–1.0000, NOT 0–100.
     """
     valid = [v for v in all_values if v is not None]
 

@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 # ingestion/seed_countries.py
 # ──────────────────────────────────────────────────────────────────────────────
-# Script 1 of 5 — seed the `countries` table.
+# Script 1 of 5 : seed the `countries` table.
 #
 # Input:  World Bank country metadata CSV (downloaded from datacatalog.worldbank.org)
 #         or the bundled country list derived from the ESG bulk CSV.
-# Output: `countries` table — 214 rows with ISO codes, region, income group.
+# Output: `countries` table : 214 rows with ISO codes, region, income group.
 #
 # Idempotent: uses upsert on iso2. Safe to re-run.
 # Run first: all other scripts reference country_id foreign keys.
@@ -46,13 +46,13 @@ def fetch_wb_metadata() -> list[dict]:
         data = resp.json()
     except ValueError:
         print("ERROR: World Bank API returned non-JSON response.")
-        print(f"HTTP {resp.status_code} — {resp.text[:500]}")
+        print(f"HTTP {resp.status_code} : {resp.text[:500]}")
         sys.exit(1)
 
     # WB API returns [pagination_info, [countries]]
     if not isinstance(data, list) or len(data) < 2 or not isinstance(data[1], list):
         print("ERROR: Unexpected World Bank API response format.")
-        print(f"HTTP {resp.status_code} — {json.dumps(data)[:500]}")
+        print(f"HTTP {resp.status_code} : {json.dumps(data)[:500]}")
         print("Tip: try `python seed_countries.py --csv path/to/ESG_data.csv` instead.")
         sys.exit(1)
 
@@ -60,7 +60,7 @@ def fetch_wb_metadata() -> list[dict]:
 
     rows = []
     for c in countries_raw:
-        # Skip aggregates (regions, income groups) — only keep sovereign countries
+        # Skip aggregates (regions, income groups) : only keep sovereign countries
         if c.get("region", {}).get("id") == "NA":
             continue
         if not c.get("iso2Code", "").strip():

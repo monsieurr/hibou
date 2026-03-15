@@ -2,7 +2,7 @@ import type { MetadataRoute } from 'next'
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Hibou — Auditable ESG Scores',
+    name: 'Hibou : Auditable ESG Scores',
     short_name: 'Hibou',
     description:
       'Percentile‑based ESG scores for sovereign countries, with carry‑forward data and visible gaps.',

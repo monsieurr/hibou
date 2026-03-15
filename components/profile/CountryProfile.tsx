@@ -66,7 +66,7 @@ export default function CountryProfile({
   const maxDataYear = scoreYears.length ? Math.max(...scoreYears) : null
   const dataYearLabel = minDataYear && maxDataYear
     ? (minDataYear === maxDataYear ? `${maxDataYear}` : `${minDataYear}–${maxDataYear}`)
-    : '—'
+    : ':'
   const dataYearNote = maxDataYear && maxDataYear < summary.year
     ? ` (latest ≤ ${summary.year})`
     : ''
@@ -106,7 +106,7 @@ export default function CountryProfile({
         <h1 className="page-title">{country.name}</h1>
         {(info?.capital_city || info?.official_languages) && (
           <p style={{ fontFamily: FONT.mono, fontSize: 11, color: CSS.textDim, letterSpacing: '0.4px', marginTop: 4 }}>
-            Capital: {info?.capital_city ?? '—'} · Languages: {info?.official_languages ?? '—'}
+            Capital: {info?.capital_city ?? ':'} · Languages: {info?.official_languages ?? ':'}
           </p>
         )}
         <p style={{ fontFamily: FONT.mono, fontSize: 11, color: CSS.textDim, letterSpacing: '0.5px' }}>
@@ -184,7 +184,7 @@ export default function CountryProfile({
           {/* DEV-03: Narrative card */}
           <NarrativeCard narrative={narrative} narrativeYear={narrativeYear} />
 
-          {/* DEV-03: Context card — GDP, industries, climate zone */}
+          {/* DEV-03: Context card : GDP, industries, climate zone */}
           <ContextCard
             country={country}
             summary={summary}

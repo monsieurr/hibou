@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # ESGCSV/ingest_wdi_social.py
 # ──────────────────────────────────────────────────────────────────────────────
-# Optional script — ingest additional Social indicators from WDI into `scores`.
+# Optional script : ingest additional Social indicators from WDI into `scores`.
 #
 # Usage:
 #   export $(grep -v '^#' .env.local | xargs)

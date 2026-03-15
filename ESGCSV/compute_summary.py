@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # ingestion/compute_summary.py
 # ──────────────────────────────────────────────────────────────────────────────
-# Script 5 of 7 — compute percentile scores, pillar/ESG scores and ranks,
+# Script 5 of 7 : compute percentile scores, pillar/ESG scores and ranks,
 # flag data completeness, and upsert into esg_summary.
 #
 # This script reads from `scores`, writes percentile values back, and
@@ -464,7 +464,7 @@ def print_coverage_report(summaries: list[dict], supabase, indicator_totals: dic
         group = by_year[year]
         complete   = sum(1 for s in group if s["data_complete"])
         incomplete = len(group) - complete
-        print(f"  {year}: {len(group)} countries — {complete} complete, {incomplete} incomplete")
+        print(f"  {year}: {len(group)} countries : {complete} complete, {incomplete} incomplete")
 
     incomplete_total = [s for s in summaries if not s["data_complete"]]
     if incomplete_total:

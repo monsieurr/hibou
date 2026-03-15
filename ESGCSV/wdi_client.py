@@ -71,7 +71,7 @@ def fetch_wdi_series(
                 if attempt >= retries:
                     raise
                 wait = 2 ** attempt
-                print(f"  [retry] {code} page {page} attempt {attempt}/{retries} — waiting {wait}s…")
+                print(f"  [retry] {code} page {page} attempt {attempt}/{retries} : waiting {wait}s…")
                 time.sleep(wait)
 
         if last_error:

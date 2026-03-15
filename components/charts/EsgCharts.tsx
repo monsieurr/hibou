@@ -1,5 +1,5 @@
 // components/charts/EsgCharts.tsx
-// Recharts chart components. Colors sourced from tokens — no hardcoded values.
+// Recharts chart components. Colors sourced from tokens : no hardcoded values.
 'use client'
 
 import {
@@ -9,7 +9,7 @@ import {
 import type { RadarDataPoint } from '@/types/hibou'
 import { CSS, FONT, PILLAR_CSS } from '@/lib/tokens'
 
-// ── EsgRadar — single country ─────────────────────────────────────────────────
+// ── EsgRadar : single country ─────────────────────────────────────────────────
 
 interface EsgRadarProps {
   data: RadarDataPoint[]
@@ -58,7 +58,7 @@ export function EsgRadar({
   )
 }
 
-// ── CompareRadar — dual-country overlay ───────────────────────────────────────
+// ── CompareRadar : dual-country overlay ───────────────────────────────────────
 
 interface CompareRadarEntry { axis: string; a: number; b: number }
 

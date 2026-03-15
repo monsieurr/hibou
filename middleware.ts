@@ -25,7 +25,7 @@ export async function middleware(request: NextRequest) {
     <head>
       <meta charset="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <title>Hibou — Slow down</title>
+      <title>Hibou : Slow down</title>
       <style>
         :root { color-scheme: dark; }
         body {

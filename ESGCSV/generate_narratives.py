@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # ingestion/generate_narratives.py
 # ──────────────────────────────────────────────────────────────────────────────
-# Script 6 of 7 — generate and store AI narrative summaries for all countries.
+# Script 6 of 7 : generate and store AI narrative summaries for all countries.
 #
 # Calls the configured LLM (Anthropic or Ollama) once per country (latest year only)
 # and stores the result in esg_summary.narrative. Skips rows that already have a narrative.
@@ -131,7 +131,7 @@ def format_indicator(row: dict) -> str:
     name = ind.get("name") or "Unknown indicator"
     score = _pct(row.get("normalized"))
     year = row.get("year")
-    return f"{code} {name} — {score} (data {year})"
+    return f"{code} {name} : {score} (data {year})"
 
 
 def extract_json(text: str) -> dict:
@@ -175,8 +175,8 @@ def compose_narrative(payload: dict) -> str:
 
     def build(include_context: bool) -> str:
         base = (
-            f"Strength: {strength_label} — {strength_reason}. "
-            f"Weakness: {weakness_label} — {weakness_reason}."
+            f"Strength: {strength_label} : {strength_reason}. "
+            f"Weakness: {weakness_label} : {weakness_reason}."
         )
         if include_context:
             return f"{base} Context: {context}."
@@ -188,8 +188,8 @@ def compose_narrative(payload: dict) -> str:
 
     context_short = clip_text(context, 40)
     narrative = (
-        f"Strength: {strength_label} — {strength_reason}. "
-        f"Weakness: {weakness_label} — {weakness_reason}. "
+        f"Strength: {strength_label} : {strength_reason}. "
+        f"Weakness: {weakness_label} : {weakness_reason}. "
         f"Context: {context_short}."
     )
     if len(narrative) <= MAX_NARRATIVE_LEN:
@@ -202,8 +202,8 @@ def compose_narrative(payload: dict) -> str:
     strength_reason_short = clip_text(strength_reason, 40)
     weakness_reason_short = clip_text(weakness_reason, 40)
     narrative = (
-        f"Strength: {strength_label} — {strength_reason_short}. "
-        f"Weakness: {weakness_label} — {weakness_reason_short}."
+        f"Strength: {strength_label} : {strength_reason_short}. "
+        f"Weakness: {weakness_label} : {weakness_reason_short}."
     )
     if len(narrative) <= MAX_NARRATIVE_LEN:
         return narrative
@@ -231,7 +231,7 @@ def load_summary_rows(
         query = query.is_("narrative", "null")
 
     if iso2_filter:
-        # Filter by iso2 via the join — requires filtering post-fetch
+        # Filter by iso2 via the join : requires filtering post-fetch
         pass
 
     result = query.execute()
@@ -290,7 +290,7 @@ def generate_narrative(
 
         except Exception as e:
             wait = 2 ** attempt
-            print(f"\n    [llm error] attempt {attempt}/{MAX_RETRIES} — {e} — sleeping {wait}s…", end="")
+            print(f"\n    [llm error] attempt {attempt}/{MAX_RETRIES} : {e} : sleeping {wait}s…", end="")
             time.sleep(wait)
             last_error = e
 
@@ -324,7 +324,7 @@ def main() -> None:
 
     print(f"Generating narratives for {len(rows)} countries…")
     if args.dry_run:
-        print("(DRY RUN — no API calls or DB writes)\n")
+        print("(DRY RUN : no API calls or DB writes)\n")
 
     ok = 0
     errors = 0

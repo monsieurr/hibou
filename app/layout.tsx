@@ -9,7 +9,7 @@ const baseUrl = process.env.NEXT_PUBLIC_SITE_URL
     ? `https://${process.env.VERCEL_URL}`
     : 'http://localhost:3000'
 
-const siteTitle = 'Hibou — Auditable ESG Scores'
+const siteTitle = 'Hibou : Auditable ESG Scores'
 const siteDescription =
   'Percentile‑based ESG scores for sovereign countries, with carry‑forward data and visible gaps.'
 
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
     default: siteTitle,
-    template: '%s — Hibou',
+    template: '%s : Hibou',
   },
   description: siteDescription,
   applicationName: 'Hibou',
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
         url: '/opengraph-image',
         width: 1200,
         height: 630,
-        alt: 'Hibou — Auditable ESG Scores',
+        alt: 'Hibou : Auditable ESG Scores',
       },
     ],
   },

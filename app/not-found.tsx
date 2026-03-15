@@ -1,5 +1,5 @@
 // app/not-found.tsx
-// Custom 404 page — shown when getSummaryByIso2 returns null
+// Custom 404 page : shown when getSummaryByIso2 returns null
 // (invalid ISO2 code in the URL) or any notFound() call.
 
 export default function NotFound() {

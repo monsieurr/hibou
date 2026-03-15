@@ -31,7 +31,7 @@ export default function OpenGraphImage() {
           Auditable ESG scores for countries
         </div>
         <div style={{ fontSize: 22, color: '#b7a99d', maxWidth: 880, lineHeight: 1.4 }}>
-          Percentiles, peer groups, and carry‑forward data — with gaps shown, not hidden.
+          Percentiles, peer groups, and carry‑forward data : with gaps shown, not hidden.
         </div>
       </div>
     ),

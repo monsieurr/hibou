@@ -1,4 +1,4 @@
-# 🦉 Hibou — Auditable ESG Scores for Countries
+# 🦉 Hibou : Auditable ESG Scores for Countries
 
 Hibou is an opinionated ESG explorer for sovereign countries. It favors traceable sources, percentile scoring, and visible data gaps over glossy narratives or black‑box ratings.
 
@@ -224,7 +224,7 @@ python generate_narratives.py                  # 9. Generate AI narratives
 python generate_context.py                     # 10. Generate country context blocks
 ```
 
-All scripts are idempotent — safe to re-run. Use `--min-year/--max-year` to change the year window.
+All scripts are idempotent : safe to re-run. Use `--min-year/--max-year` to change the year window.
 To load capital/language fields, run `ingest_restcountries.py` (recommended) or
 pass `--info-csv path/to/country_info.csv` to `ingest_wdi.py`.
 If the WDI API times out, retry with smaller pages or a longer timeout:
@@ -337,7 +337,7 @@ npm run build   # verify build passes locally first
    - `NEXT_PUBLIC_SUPABASE_URL`
    - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
    - `HIBOU_API_SECRET` (optional but recommended for admin use)
-7. Deploy — Vercel auto-detects Next.js
+7. Deploy : Vercel auto-detects Next.js
 
 **Notes**
 - The production app only needs the **publishable** key. Keep `SUPABASE_KEY`
@@ -360,5 +360,5 @@ npm run build   # verify build passes locally first
 | Source | License | Used for |
 |---|---|---|
 | [World Bank ESG Data Portal](https://esgdata.worldbank.org) | CC BY 4.0 | 26 of 27 indicators |
-| [Our World in Data — CO2](https://github.com/owid/co2-data) | CC BY | E1: CO₂ per capita (better coverage) |
+| [Our World in Data : CO2](https://github.com/owid/co2-data) | CC BY | E1: CO₂ per capita (better coverage) |
 | [World Bank WGI](https://info.worldbank.org/governance/wgi/) | CC BY 4.0 | G1–G6: Governance indicators (included in ESG bulk) |

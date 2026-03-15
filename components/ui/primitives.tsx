@@ -157,7 +157,7 @@ export function LoadingDots() {
   )
 }
 
-// ── MonoLabel — small uppercase mono label ────────────────────────────────────
+// ── MonoLabel : small uppercase mono label ────────────────────────────────────
 
 export function MonoLabel({
   children,
@@ -179,7 +179,7 @@ export function MonoLabel({
   )
 }
 
-// ── ScoreModeToggle — global vs peer ─────────────────────────────────────────
+// ── ScoreModeToggle : global vs peer ─────────────────────────────────────────
 
 export function ScoreModeToggle({
   mode,
@@ -208,7 +208,7 @@ export function ScoreModeToggle({
   )
 }
 
-// ── Tag — small pill badge ────────────────────────────────────────────────────
+// ── Tag : small pill badge ────────────────────────────────────────────────────
 
 export function Tag({
   children,

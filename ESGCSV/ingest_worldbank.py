@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 # ingestion/ingest_worldbank.py
 # ──────────────────────────────────────────────────────────────────────────────
-# Script 2 of 5 — ingest World Bank ESG bulk CSV into the `scores` table.
+# Script 2 of 5 : ingest World Bank ESG bulk CSV into the `scores` table.
 #
 # Input:  World Bank ESG bulk CSV from:
 #         https://datacatalog.worldbank.org/search/dataset/0037651
-# Output: `scores` table rows — all 27 indicators × 214 countries × available years.
+# Output: `scores` table rows : all 27 indicators × 214 countries × available years.
 #
 # Idempotent: upserts on (country_id, indicator_id, year). Safe to re-run.
 # Prerequisites: seed_countries.py must have run first.
@@ -39,7 +39,7 @@ INDICATORS = [
     # E2: EN.ATM.GHGT.KT.CE is total GHG in kt CO2-equivalent, NOT per capita.
     # The World Bank ESG portal does not publish a per-capita GHG series under a
     # separate code. Options:
-    #   (a) Keep as-is — normalisation across countries still produces a valid
+    #   (a) Keep as-is : normalisation across countries still produces a valid
     #       relative score, but the unit label "tCO2e" is misleading.
     #   (b) Replace with EN.ATM.GHGT.ZG (GHG growth rate) if available.
     #   (c) Compute per-capita in ingestion by dividing by SP.POP.TOTL.
@@ -74,7 +74,7 @@ INDICATORS = [
     {"code": "G9", "wb_code": "IT.NET.USER.ZS",   "name": "Internet access",                    "pillar": "G", "unit": "%",               "higher_is_better": True},
 ]
 
-WB_SOURCE = "World Bank Sovereign ESG Data Portal — https://esgdata.worldbank.org"
+WB_SOURCE = "World Bank Sovereign ESG Data Portal : https://esgdata.worldbank.org"
 DEFAULT_MIN_YEAR = 2018
 DEFAULT_MAX_YEAR = 2023
 
@@ -179,7 +179,7 @@ def ingest_csv(
         reader = csv.DictReader(f)
         headers = reader.fieldnames or []
 
-        # Detect column names — WB bulk CSV column names vary slightly
+        # Detect column names : WB bulk CSV column names vary slightly
         iso3_col    = next((h for h in headers if "country" in h.lower() and "code" in h.lower()), None)
         wb_code_col = next((h for h in headers if "indicator" in h.lower() and "code" in h.lower()), None)
         year_col    = next((h for h in headers if h.strip().isdigit() or "year" in h.lower()), None)
