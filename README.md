@@ -1,8 +1,8 @@
-# 🦉 Hibou — ESG Country Intelligence Explorer
+# 🦉 Hibou — Auditable ESG Scores for Countries
 
-Hibou aggregates, normalises, and visualises Environmental, Social, and Governance (ESG) data from authoritative open sources across all sovereign nations. It provides analysts, researchers, and policymakers with a transparent, auditable view of global sustainability performance.
+Hibou is an opinionated ESG explorer for sovereign countries. It favors traceable sources, percentile scoring, and visible data gaps over glossy narratives or black‑box ratings.
 
-**Live demo:** deploy to Vercel (see below)
+**Live demo:** https://hibou.thomaslfb.eu
 
 ---
 
@@ -30,7 +30,7 @@ Hibou aggregates, normalises, and visualises Environmental, Social, and Governan
 └─────────────────────────────────────────────────────────┘
 ```
 
-**Stack:** Next.js 16 · Tailwind 4 · TypeScript · Supabase · Python 3.11 · LLM (Anthropic or Ollama)
+**Stack:** Next.js 16 · TypeScript · Supabase · Python 3.11 · LLM (Anthropic or Ollama)
 
 **Data:** World Bank ESG Portal (Jan 2026, CC BY 4.0) · World Development Indicators (WDI) · Our World in Data (CC BY)
 
@@ -38,7 +38,7 @@ Hibou aggregates, normalises, and visualises Environmental, Social, and Governan
 
 ## Methodology (Scoring)
 
-Hibou uses a consistent, year-by-year scoring pipeline that prioritizes comparability and transparency:
+We use percentiles because ESG indicators are on incompatible scales, and we carry data forward so a country doesn’t vanish when a year is missing. Coverage is treated as confidence, not punishment.
 
 1. **Ingest raw indicator values**
    - World Bank ESG bulk CSV supplies most indicators.
@@ -63,7 +63,7 @@ Hibou uses a consistent, year-by-year scoring pipeline that prioritizes comparab
    - Coverage is `(# indicators available / # active indicators)`.
    - Missing indicators are treated as **neutral** (50), not zero:
      `adjusted = raw * coverage + 50 * (1 - coverage)`.
-   - This turns coverage into a confidence factor rather than a penalty.
+   - This makes coverage a confidence factor rather than a penalty.
 
 6. **Overall ESG score**
    - Average of E, S, and G (only if all three exist), then coverage‑adjusted.
@@ -303,9 +303,9 @@ hibou/
 
 ## ESG Indicators
 
-27 core indicators across 3 pillars. Scores are percentile-normalised (0–100) per indicator/year,
-then coverage-adjusted per pillar. Peer scores use the same method but compute percentiles
-within income groups. Optional WDI add-ons expand the Social pillar with drinking water
+27 core indicators across 3 pillars. Scores are percentile‑normalised (0–100) per indicator/year,
+then coverage‑adjusted per pillar. Peer scores use the same method but compute percentiles
+within income groups. Optional WDI add‑ons expand the Social pillar with drinking water
 and secondary enrollment indicators. Use `balance_indicators.py` to keep an even 6/6/6
 indicator split across E/S/G.
 
@@ -348,25 +348,12 @@ npm run build   # verify build passes locally first
 
 ## Production Checklist
 
-1. **GitHub**
-   - Create repo, commit, and push.
-2. **Supabase**
-   - Create project.
-   - Run `supabase/migrations/001_initial_schema.sql` in SQL Editor.
-   - Verify RLS policies exist (public read only).
-3. **Data ingestion**
-   - Run the Python pipeline locally to populate `countries`, `scores`, `esg_summary`, and metadata tables.
-4. **Vercel**
-   - Import GitHub repo.
-   - Set env vars (`NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, optional `HIBOU_API_SECRET`).
-   - Deploy.
-5. **Smoke tests**
-   - `/` map loads.
-   - `/rankings` sorts.
-   - `/compare` renders.
-   - `/country/FR?year=2023` loads with indicators.
-6. **Monitoring**
-   - Add uptime checks and error monitoring (Sentry recommended).
+1. **Data sanity**
+   - Verify `esg_summary` rows exist for your chosen year range.
+2. **Smoke tests**
+   - `/` map loads, `/rankings` sorts, `/compare` renders.
+3. **Monitoring**
+   - Add uptime checks and error monitoring (Sentry or similar).
 
 ## Data Sources
 

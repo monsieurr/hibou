@@ -1,8 +1,6 @@
 'use client'
 // components/profile/ContextCard.tsx
-// Country Context Card — spec §8.
-// Shows structural context that explains WHY ESG scores look the way they do.
-//
+// Country Context Card.
 // Context is precomputed during ingestion and stored in `country_context`.
 
 import type { Country, CountryContext, EsgSummary } from '@/types/hibou'
@@ -63,7 +61,7 @@ export default function ContextCard({ country, summary, context, dataYearLabel }
             background: 'rgba(140,107,209,0.18)',
             padding: '2px 6px', borderRadius: 3,
           }}>
-            esg context
+            CONTEXT
           </span>
         }
       />

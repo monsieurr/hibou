@@ -3,7 +3,7 @@
 'use client'
 
 import {
-  RadarChart, Radar, PolarGrid, PolarAngleAxis, ResponsiveContainer,
+  RadarChart, Radar, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer,
   BarChart, Bar, XAxis, YAxis, Tooltip, Cell,
 } from 'recharts'
 import type { RadarDataPoint } from '@/types/hibou'
@@ -25,11 +25,24 @@ export function EsgRadar({
   return (
     <div style={{ height }}>
       <ResponsiveContainer width="100%" height="100%">
-        <RadarChart data={data} margin={{ top: 10, right: 20, bottom: 10, left: 20 }}>
+        <RadarChart
+          data={data}
+          cx="50%"
+          cy="52%"
+          outerRadius="72%"
+          margin={{ top: 16, right: 24, bottom: 16, left: 24 }}
+        >
           <PolarGrid stroke={CSS.border} />
           <PolarAngleAxis
             dataKey="axis"
-            tick={{ fill: CSS.textDim, fontSize: 11, fontFamily: FONT.mono }}
+            tick={{ fill: CSS.textDim, fontSize: 11, fontFamily: FONT.mono, dy: -6 }}
+          />
+          <PolarRadiusAxis
+            domain={[0, 100]}
+            tick={{ fill: CSS.textDim, fontSize: 10, fontFamily: FONT.mono, dy: 6 }}
+            angle={90}
+            axisLine={false}
+            tickCount={5}
           />
           <Radar
             dataKey="score"
@@ -63,15 +76,28 @@ const TooltipStyle = {
   fontSize: 11,
 }
 
-export function CompareRadar({ data, nameA, nameB, height = 280 }: CompareRadarProps) {
+export function CompareRadar({ data, nameA, nameB, height = 360 }: CompareRadarProps) {
   return (
     <div style={{ height }}>
       <ResponsiveContainer width="100%" height="100%">
-        <RadarChart data={data} margin={{ top: 10, right: 20, bottom: 10, left: 20 }}>
+        <RadarChart
+          data={data}
+          cx="50%"
+          cy="58%"
+          outerRadius="92%"
+          margin={{ top: 16, right: 24, bottom: 16, left: 24 }}
+        >
           <PolarGrid stroke={CSS.border} />
           <PolarAngleAxis
             dataKey="axis"
-            tick={{ fill: CSS.textDim, fontSize: 10, fontFamily: FONT.mono }}
+            tick={{ fill: CSS.textDim, fontSize: 10, fontFamily: FONT.mono, dy: -6 }}
+          />
+          <PolarRadiusAxis
+            domain={[0, 100]}
+            tick={{ fill: CSS.textDim, fontSize: 9, fontFamily: FONT.mono, dy: 6 }}
+            angle={90}
+            axisLine={false}
+            tickCount={5}
           />
           <Radar name={nameA} dataKey="a" stroke={PILLAR_CSS.E} fill={PILLAR_CSS.E} fillOpacity={0.15} strokeWidth={2} />
           <Radar name={nameB} dataKey="b" stroke={PILLAR_CSS.S} fill={PILLAR_CSS.S} fillOpacity={0.12} strokeWidth={2} />

@@ -59,7 +59,7 @@ export default function CompareView({ allSummaries }: Props) {
         {selectedYear ? <Tag>DATA YEAR {selectedYear}</Tag> : null}
       </div>
       <p className="page-subtitle" style={{ marginBottom: 20 }}>
-        Side-by-side ESG analysis across all available indicators
+        Compare percentile scores and indicator gaps side‑by‑side
       </p>
 
       <DisclaimerBar />
@@ -92,7 +92,9 @@ export default function CompareView({ allSummaries }: Props) {
           onChange={setIso2A}
           exclude={iso2B}
         />
-        <MonoLabel>VS</MonoLabel>
+        <div className="compare-vs">
+          <MonoLabel>VS</MonoLabel>
+        </div>
         <CountrySelector
           summaries={sorted}
           value={iso2B}
@@ -104,7 +106,7 @@ export default function CompareView({ allSummaries }: Props) {
       {cA && cB && (
         <>
           {/* ── Score comparison row ── */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr', gap: 8, marginBottom: 20, alignItems: 'start' }}>
+          <div className="compare-score-row">
             <CountryScorePanel summary={cA} scoreMode={scoreMode} />
             <DiffColumn a={cA} b={cB} scoreMode={scoreMode} />
             <CountryScorePanel summary={cB} scoreMode={scoreMode} />
@@ -234,7 +236,7 @@ function DiffColumn({
   }))
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 6, alignItems: 'center' }}>
+    <div className="compare-diff">
       {diffs.map(({ label, diff }) => (
         <div key={label} style={{
           padding: '4px 8px', background: CSS.panel,

@@ -126,10 +126,8 @@ export function PillarSectionHeader({
 export function DisclaimerBar() {
   return (
     <div className="income-disclaimer">
-      <strong>⚠ Income Bias:</strong> Scores reflect absolute performance vs all countries.
-      Wealthier countries structurally score higher on most Social indicators.
-      A low CO₂ score in a poor country reflects energy poverty, not environmental policy.
-      Filter by income group for fair peer comparison.
+      <strong>⚠ Income bias:</strong> Global scores reward wealth. Use Peer mode to compare within income groups.
+      A low CO₂ score in a poor country often reflects energy poverty, not policy.
     </div>
   )
 }

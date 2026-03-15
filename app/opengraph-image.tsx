@@ -28,10 +28,10 @@ export default function OpenGraphImage() {
         <div style={{ fontSize: 96 }}>🦉</div>
         <div style={{ fontSize: 64, fontWeight: 700, letterSpacing: '0.5px' }}>Hibou</div>
         <div style={{ fontSize: 30, color: '#d8cfc6' }}>
-          ESG Country Intelligence Explorer
+          Auditable ESG scores for countries
         </div>
         <div style={{ fontSize: 22, color: '#b7a99d', maxWidth: 880, lineHeight: 1.4 }}>
-          Percentile-based environmental, social, and governance scores across sovereign nations.
+          Percentiles, peer groups, and carry‑forward data — with gaps shown, not hidden.
         </div>
       </div>
     ),

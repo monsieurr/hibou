@@ -1,14 +1,5 @@
 // lib/data/repository.ts
-// ─────────────────────────────────────────────────────────────────────────────
-// Server-side data repository.
-// All Supabase queries live here — RSC pages call these functions,
-// never query the DB directly. This makes pages easy to test and swap.
-//
-// Rules:
-//  - Every function is async and returns typed data or throws.
-//  - "Latest year per country" dedup logic lives here, not in pages.
-//  - No UI imports. No client-side code.
-// ─────────────────────────────────────────────────────────────────────────────
+// Server-side data repository for all Supabase queries.
 
 import { cache } from 'react'
 import { createClient } from '@/lib/supabase/server'

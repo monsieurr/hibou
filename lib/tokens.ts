@@ -1,14 +1,5 @@
 // lib/tokens.ts
-// ─────────────────────────────────────────────────────────────────────────────
-// Single source of truth for all design tokens.
-//
-// CSS custom properties in globals.css are the canonical runtime values.
-// This file mirrors them in TypeScript so components, utilities, and
-// tests can reference tokens without hardcoding hex strings.
-//
-// Rule: if you change a color here, change the matching var in globals.css.
-// Rule: components should import from here — never hardcode hex values.
-// ─────────────────────────────────────────────────────────────────────────────
+// Design tokens mirrored from globals.css for use in TS.
 
 import type { Pillar } from '@/types/hibou'
 
@@ -17,6 +8,7 @@ export const RAW = {
   bg:       '#0d0a08',
   surface:  '#15100d',
   panel:    '#211814',
+  mapBg:    '#211814',
   border:   '#35281f',
   accentE:  '#7fb069',
   accentS:  '#e6c84f',
@@ -34,6 +26,7 @@ export const CSS = {
   bg:       'var(--bg)',
   surface:  'var(--surface)',
   panel:    'var(--panel)',
+  mapBg:    'var(--map-bg)',
   border:   'var(--border)',
   accentE:  'var(--accent-e)',
   accentS:  'var(--accent-s)',

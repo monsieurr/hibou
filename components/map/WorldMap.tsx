@@ -1,12 +1,6 @@
 'use client'
 // components/map/WorldMap.tsx
-// DEV-01: Real geographic SVG choropleth map using react-simple-maps.
-// DEV-02: Year selector — all years passed from page, filtered client-side.
-//
-// Data flow:
-//   page.tsx (RSC) → getAllSummariesAllYears() → WorldMap (client)
-//   WorldMap derives available years, builds iso2 → summary lookup per year,
-//   colours each Geography feature based on the selected pillar/year score.
+// Geographic choropleth map using react-simple-maps.
 
 import { useState, useMemo, useCallback, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
@@ -244,18 +238,18 @@ export default function WorldMap({ allSummaries }: Props) {
         </div>
       )}
 
-      <div className="map-header" style={{ marginBottom: 10 }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
-          <h1 className="page-title" style={{ marginBottom: 0 }}>🦉 Hibou — ESG Country Explorer</h1>
+      <div className="map-header">
+        <div className="map-title-row">
+          <h1 className="page-title" style={{ marginBottom: 0 }}>🦉 Hibou — Auditable ESG Scores</h1>
           {selectedYear ? <Tag>DATA YEAR {selectedYear}</Tag> : null}
         </div>
         <p className="page-subtitle">
-          {scoreMode === 'peer' ? 'Peer-group' : 'Global'} sustainability performance · {total} countries with {selectedYear} data
+          {scoreMode === 'peer' ? 'Peer-group' : 'Global'} percentiles · {total} countries with data ≤ {selectedYear}
         </p>
       </div>
 
       {/* ── Controls row ── */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap', marginBottom: 16 }}>
+      <div className="map-controls">
         {/* Pillar toggle */}
         <div className="pillar-toggle" style={{ marginBottom: 0 }}>
           {PILLAR_OPTIONS.map(({ key, label }) => (
@@ -271,7 +265,6 @@ export default function WorldMap({ allSummaries }: Props) {
 
         <ScoreModeToggle mode={scoreMode} onChange={setScoreMode} />
 
-        {/* DEV-02: Year selector */}
         {availableYears.length > 1 && (
           <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
             <span style={{ fontFamily: FONT.mono, fontSize: 10, color: CSS.textDim, letterSpacing: '1px' }}>
@@ -299,7 +292,7 @@ export default function WorldMap({ allSummaries }: Props) {
           {/* ── Geographic choropleth map ── */}
           <div
             className="panel map-panel"
-            style={{ overflow: 'hidden', background: CSS.panel }}
+            style={{ overflow: 'hidden', background: CSS.mapBg }}
             onMouseMove={handleGeoMouseMove}
           >
             <ComposableMap
@@ -383,7 +376,7 @@ export default function WorldMap({ allSummaries }: Props) {
 
           <DisclaimerBar />
           <p className="map-methodology">
-            Scores are percentile-based (0-100), adjusted for indicator coverage, and reflect the most recent data on or before the selected year.
+            Scores are percentiles (0–100) using the most recent data ≤ the selected year.
             Peer mode computes percentiles within income groups.
           </p>
 
@@ -397,7 +390,7 @@ export default function WorldMap({ allSummaries }: Props) {
         {selected ? (
           <div className="country-card">
             <div className="country-card-header">
-              <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between' }}>
+              <div className="country-card-headline">
                 <div>
                   <div className="country-name">{selected.countries?.name}</div>
                   <div className="country-meta">
@@ -477,7 +470,7 @@ export default function WorldMap({ allSummaries }: Props) {
                 Select a Country
               </div>
               <p style={{ fontSize: 12, color: CSS.textDim, lineHeight: 1.6 }}>
-                Click any country on the map to see ESG scores, rankings, and access the full profile.
+                Click any country to see percentile scores, data years, and sources.
               </p>
             </div>
 

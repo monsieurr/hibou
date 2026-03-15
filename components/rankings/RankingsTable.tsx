@@ -107,7 +107,7 @@ export default function RankingsTable({ summaries }: Props) {
         <select className="select-filter" value={filterIncome} onChange={(e) => setFilterIncome(e.target.value)}>
           {incomes.map((i) => <option key={i}>{i}</option>)}
         </select>
-        <span style={{ fontFamily: FONT.mono, fontSize: 11, color: CSS.textDim, marginLeft: 'auto' }}>
+        <span className="rankings-count" style={{ fontFamily: FONT.mono, fontSize: 11, color: CSS.textDim, marginLeft: 'auto' }}>
           {filtered.length} countries
         </span>
       </div>

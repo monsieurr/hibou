@@ -1,8 +1,7 @@
 'use client'
 // components/compare/IndicatorHeatmap.tsx
 // Shows per-indicator scores side-by-side as colored cells.
-// Fetches real scores from Supabase via the useCountryScores hook —
-// no more fake hashed values.
+// Fetches scores from Supabase via the useCountryScores hook.
 
 import { useCountryScores } from '@/hooks/useCountryScores'
 import { scoreToColor } from '@/lib/utils/scores'
@@ -34,7 +33,7 @@ export default function IndicatorHeatmap({ countryIdA, countryIdB, isoA, isoB, y
   if (a.error || b.error) {
     return (
       <p style={{ fontSize: 12, color: CSS.danger, padding: 12 }}>
-        Error loading scores: {a.error ?? b.error}
+        Couldn’t load indicator scores. Please try again.
       </p>
     )
   }
@@ -53,7 +52,8 @@ export default function IndicatorHeatmap({ countryIdA, countryIdB, isoA, isoB, y
   return (
     <div style={{ maxHeight: 340, overflowY: 'auto' }}>
       <div style={{ fontFamily: FONT.mono, fontSize: 9, color: CSS.textDim, marginBottom: 6 }}>
-        Mode: {mode.toUpperCase()} · Year: {year} · Indicators use global percentiles
+        Mode: {mode.toUpperCase()} · Year: {year} ·
+        {mode === 'peer' ? ' Percentiles within income group' : ' Global percentiles'}
       </div>
       {/* Header row */}
       <div style={{ display: 'grid', gridTemplateColumns: '28px 1fr 40px 40px', gap: 4, marginBottom: 6 }}>

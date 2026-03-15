@@ -20,8 +20,8 @@ export default function GlobalError({ error, reset }: Props) {
 
   return (
     <ErrorState
-      title="Something went wrong"
-      message="We couldn’t load this view. Please try again or return to the world map."
+      title="Data load failed"
+      message="We couldn’t reach the data service. If this persists, verify Supabase configuration."
       showRetry
       onRetry={reset}
       digest={error.digest}

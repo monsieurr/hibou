@@ -1,6 +1,6 @@
 'use client'
 // components/profile/NarrativeCard.tsx
-// Displays the precomputed AI narrative for a country.
+// Displays the precomputed narrative for a country.
 
 import { Panel, PanelHeader, PanelBody } from '@/components/ui/primitives'
 import { CSS, FONT } from '@/lib/tokens'
@@ -14,14 +14,14 @@ export default function NarrativeCard({ narrative, narrativeYear }: Props) {
   return (
     <Panel>
       <PanelHeader
-        title="AI Narrative"
+        title="Country Summary"
         right={
           <span style={{
             fontFamily: FONT.mono, fontSize: 9,
             color: CSS.textDim, background: 'rgba(127,176,105,0.2)',
             padding: '2px 6px', borderRadius: 3,
           }}>
-            LLM
+            GENERATED
           </span>
         }
       />
@@ -32,7 +32,7 @@ export default function NarrativeCard({ narrative, narrativeYear }: Props) {
               &ldquo;{narrative}&rdquo;
             </p>
             <p style={{ fontFamily: FONT.mono, fontSize: 10, color: CSS.textDim }}>
-              Based on the most recent data{narrativeYear ? ` (year ${narrativeYear})` : ''} · applies to all years.
+              Generated from the most recent data{narrativeYear ? ` (year ${narrativeYear})` : ''}. Applies to all years.
             </p>
           </>
         ) : (

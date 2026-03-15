@@ -9,9 +9,9 @@ const baseUrl = process.env.NEXT_PUBLIC_SITE_URL
     ? `https://${process.env.VERCEL_URL}`
     : 'http://localhost:3000'
 
-const siteTitle = 'Hibou — ESG Country Intelligence Explorer'
+const siteTitle = 'Hibou — Auditable ESG Scores'
 const siteDescription =
-  'Aggregates, normalises, and visualises Environmental, Social, and Governance (ESG) data from authoritative open sources across all sovereign nations.'
+  'Percentile‑based ESG scores for sovereign countries, with carry‑forward data and visible gaps.'
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
         url: '/opengraph-image',
         width: 1200,
         height: 630,
-        alt: 'Hibou — ESG Country Intelligence Explorer',
+        alt: 'Hibou — Auditable ESG Scores',
       },
     ],
   },
@@ -93,7 +93,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <a href="/compare"   className="nav-link">⚖️ Compare</a>
           </div>
           <div className="nav-right">
-            <span className="nav-meta">27 Indicators · ESG 2026</span>
+            <span className="nav-meta">Percentile ESG · Global/Peer</span>
             <ThemeToggle />
           </div>
         </nav>

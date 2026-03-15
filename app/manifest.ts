@@ -2,10 +2,10 @@ import type { MetadataRoute } from 'next'
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Hibou — ESG Country Intelligence Explorer',
+    name: 'Hibou — Auditable ESG Scores',
     short_name: 'Hibou',
     description:
-      'ESG country intelligence with percentile-based scores across environmental, social, and governance pillars.',
+      'Percentile‑based ESG scores for sovereign countries, with carry‑forward data and visible gaps.',
     start_url: '/',
     display: 'standalone',
     background_color: '#0d0a08',

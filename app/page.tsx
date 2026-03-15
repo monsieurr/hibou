@@ -1,5 +1,4 @@
 // app/page.tsx — World Map
-// DEV-02: passes all years to the WorldMap so the year selector has full data
 import { getAllSummariesAllYears } from '@/lib/data/repository'
 import WorldMap from '@/components/map/WorldMap'
 
