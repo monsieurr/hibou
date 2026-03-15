@@ -360,5 +360,16 @@ npm run build   # verify build passes locally first
 | Source | License | Used for |
 |---|---|---|
 | [World Bank ESG Data Portal](https://esgdata.worldbank.org) | CC BY 4.0 | 26 of 27 indicators |
-| [Our World in Data : CO2](https://github.com/owid/co2-data) | CC BY | E1: CO₂ per capita (better coverage) |
-| [World Bank WGI](https://info.worldbank.org/governance/wgi/) | CC BY 4.0 | G1–G6: Governance indicators (included in ESG bulk) |
+| [World Bank ESG Bulk CSV](https://datacatalog.worldbank.org/search/dataset/0037651) | CC BY 4.0 | Primary ESG series download |
+| [Our World in Data — CO2](https://github.com/owid/co2-data) | CC BY | E1: CO₂ per capita (better coverage) |
+| [World Development Indicators API](https://api.worldbank.org) | CC BY 4.0 | GDP, population, land area, social add‑ons |
+| [World Bank WGI](https://info.worldbank.org/governance/wgi/) | CC BY 4.0 | G1–G6 governance indicators |
+
+## Country Metadata
+
+- [RestCountries API](https://restcountries.com) — capital city, official languages, area (optional ingestion)
+
+## Map Asset
+
+- [world-atlas](https://github.com/topojson/world-atlas) — TopoJSON basemap
+- [jsDelivr CDN](https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json) — hosted 110m map used by the app
