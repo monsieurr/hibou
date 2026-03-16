@@ -14,7 +14,7 @@ Hibou is an opinionated ESG explorer for sovereign countries. It favors traceabl
 ```
 ┌─────────────────────────────────────────────────────────┐
 │                     Data Sources                        │
-│  World Bank ESG Bulk CSV  ·  OWID CO2 CSV               │
+│  World Bank ESG CSV  ·  OWID CO2 CSV  ·  WDI API        │
 └────────────────────┬────────────────────────────────────┘
                      │ Python ingestion pipeline
 ┌────────────────────▼────────────────────────────────────┐
@@ -35,7 +35,7 @@ Hibou is an opinionated ESG explorer for sovereign countries. It favors traceabl
 
 **Stack:** Next.js 16 · TypeScript · Supabase · Python 3.11 · LLM (Anthropic or Ollama)
 
-**Data:** World Bank ESG Portal (Jan 2026, CC BY 4.0) · World Development Indicators (WDI) · Our World in Data (CC BY)
+**Data:** World Bank ESG Portal (CC BY 4.0) · World Development Indicators (WDI) · Our World in Data (CC BY)
 
 ---
 
@@ -72,7 +72,7 @@ We use percentiles because ESG indicators are on incompatible scales, and we car
    - Average of E, S, and G (only if all three exist), then coverage‑adjusted.
 
 7. **Data completeness flag**
-   - `data_complete = true` if each pillar has at least 7/9 indicators.
+   - `data_complete = true` if each pillar has at least 7/9 of active indicators.
 
 8. **Ranks**
    - Global ranks and peer (income‑group) ranks are computed per year.
@@ -295,7 +295,7 @@ hibou/
 │   ├── data/repository.ts          # All DB queries
 │   ├── utils/scores.ts             # Score → colour utilities
 │   └── tokens.ts                   # Design tokens
-├── ESGCSV/                         # Python data pipeline (10 scripts)
+├── ESGCSV/                         # Python data pipeline scripts
 ├── supabase/migrations/            # SQL schema
 └── types/
     ├── hibou.ts                    # App interfaces
@@ -306,7 +306,7 @@ hibou/
 
 ## ESG Indicators
 
-27 core indicators across 3 pillars. Scores are percentile‑normalised (0–100) per indicator/year,
+27 core indicators across 3 pillars. Scores are percentile‑normalised (0–1 internally, shown as 0–100) per indicator/year,
 then coverage‑adjusted per pillar. Peer scores use the same method but compute percentiles
 within income groups. Optional WDI add‑ons expand the Social pillar with drinking water
 and secondary enrollment indicators. Use `balance_indicators.py` to keep an even 6/6/6
