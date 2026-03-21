@@ -207,6 +207,22 @@ body {
   .compare-diff { flex-direction: row; justify-content: center; flex-wrap: wrap; }
   .profile-header { flex-direction: column; align-items: flex-start; gap: 8px; }
   .indicator-detail { grid-template-columns: 1fr; }
+  .map-page.map-has-selection .map-sidebar {
+    position: fixed;
+    left: 12px;
+    right: 12px;
+    bottom: calc(12px + env(safe-area-inset-bottom));
+    z-index: 120;
+    max-height: 55vh;
+    overflow: auto;
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  .map-page.map-has-selection .country-card {
+    max-height: 55vh;
+    overflow: auto;
+  }
+  .map-page.map-has-selection .country-card-header { padding-right: 46px; }
+  .map-page.map-has-selection .country-card-close { display: inline-flex; }
 }
 @media (max-width: 720px) {
   .page-title { font-size: 24px; }
@@ -319,7 +335,7 @@ body {
 /* ── Country Card ── */
 :root[data-theme='light'] .country-card { box-shadow: 0 12px 22px rgba(44,32,22,0.1); }
 .country-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; overflow: visible; box-shadow: 0 14px 30px rgba(0,0,0,0.22); }
-.country-card-header { padding: 16px 18px; border-bottom: 1px solid var(--border); background: var(--panel); }
+.country-card-header { padding: 16px 18px; border-bottom: 1px solid var(--border); background: var(--panel); position: relative; }
 .country-name { font-family: var(--font-heading); font-size: 20px; font-weight: 700; color: var(--accent); }
 .country-meta { font-family: var(--font-mono); font-size: 10px; color: var(--text-dim); letter-spacing: 0.5px; margin-top: 4px; }
 .score-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); }
@@ -372,6 +388,25 @@ body {
 }
 .country-nav-btn:hover:not(:disabled) { border-color: var(--accent); color: var(--text); }
 .country-nav-btn:disabled { opacity: 0.5; cursor: default; }
+.country-card-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-dim);
+  font-family: var(--font-mono);
+  font-size: 14px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.country-card-close:hover { color: var(--text); border-color: var(--text-dim); }
 
 /* ── Profile ── */
 .profile-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 24px; }

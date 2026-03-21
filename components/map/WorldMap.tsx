@@ -223,7 +223,7 @@ export default function WorldMap({ allSummaries }: Props) {
   }, [canNavigate, nextSummary, prevSummary])
 
   return (
-    <div className="map-page" style={{ position: 'relative' }}>
+    <div className={`map-page${selected ? ' map-has-selection' : ''}`} style={{ position: 'relative' }}>
 
       {/* ── Tooltip ── */}
       {tooltip && (
@@ -408,6 +408,14 @@ export default function WorldMap({ allSummaries }: Props) {
                 {!selected.data_complete && <IncompleteBadge />}
                 <ConfidenceBadge coverage={getSummaryCoverage(selected, 'ESG')} />
               </div>
+              <button
+                className="country-card-close"
+                type="button"
+                onClick={() => setSelected(null)}
+                aria-label="Close country details"
+              >
+                ×
+              </button>
             </div>
 
             <div className="score-grid">
